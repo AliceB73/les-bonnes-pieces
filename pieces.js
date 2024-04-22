@@ -52,7 +52,7 @@ boutonTrier.addEventListener("click", function () {
     console.log(piecesOrdonnes);
 });
 
-// Fonctionnalité de filtre
+// Fonctionnalité de filtre pour les pièces abordables
 const boutonFiltrer = document.querySelector(".btn-filtrer");
 
 boutonFiltrer.addEventListener("click", function () {
@@ -61,6 +61,7 @@ boutonFiltrer.addEventListener("click", function () {
     });
 });
 
+//Fonctionnalité de filtre pour les pièces sans description
 const boutonNoDesc = document.querySelector(".btn-nodesc");
 
 boutonNoDesc.addEventListener("click", function () {
@@ -70,6 +71,7 @@ boutonNoDesc.addEventListener("click", function () {
     console.log(piecesFiltrees);
 });
 
+//Fonctionnalité de tri par prix décroissant
 const boutonDecroissant = document.querySelector(".btn-decroissant");
 
 boutonDecroissant.addEventListener("click", function () {
@@ -80,6 +82,7 @@ boutonDecroissant.addEventListener("click", function () {
     console.log(piecesOrdonnes);
 });
 
+//Ajout d'une liste de pièces à prix abordable
 const noms = pieces.map(piece => piece.nom);
 
 for (let i = pieces.length - 1; i >= 0; i--) {
@@ -97,3 +100,24 @@ for (let i = 0; i < noms.length; i++) {
 }
 
 document.querySelector(".abordables").appendChild(abordablesElement);
+
+//Ajout d'une liste de pièces disponibles
+const nomsDisponibles = pieces.map(piece => piece.nom);
+const prixDisponibles = pieces.map(piece => piece.prix);
+
+for (let i = pieces.length - 1; i >= 0; i--) {
+    if (pieces[i].disponibilite === false) {
+        nomsDisponibles.splice(i, 1);
+        prixDisponibles.splice(i, 1);
+    }
+}
+
+const disponiblesElement = document.createElement("ul");
+
+for (let i = 0; i < nomsDisponibles.length; i++) {
+    const nomElement = document.createElement("li");
+    nomElement.innerText = `${nomsDisponibles[i]} - ${prixDisponibles[i]} €`;
+    disponiblesElement.appendChild(nomElement);
+}
+
+document.querySelector(".disponibles").appendChild(disponiblesElement);
