@@ -82,6 +82,16 @@ boutonDecroissant.addEventListener("click", function () {
     genererPieces(piecesOrdonnes);
 });
 
+//Fonctionnalité de prix maximum
+const inputPrixMax = document.getElementById("prix-max");
+inputPrixMax.addEventListener("input", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= inputPrixMax.value;
+    });
+    document.querySelector(".fiches").innerHTML = "";
+    genererPieces(piecesFiltrees);
+});
+
 //Ajout d'une liste de pièces à prix abordable
 const noms = pieces.map(piece => piece.nom);
 
