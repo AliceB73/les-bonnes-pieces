@@ -19,3 +19,21 @@ export function ajoutListenersAvis() {
         });
     }
 }
+
+export function ajoutListenerEnvoyerAvis() {
+    const formulaireAvis = document.querySelector(".formulaire-avis");
+    formulaireAvis.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const avis = {
+            pieceId: parseInt(event.target.querySelector("[name=piece-id]").value),
+            utilisateur: event.target.querySelector("[name=utilisateur]").value,
+            commentaire: event.target.querySelector("[name=commentaire]").value,
+        };
+        const chargeUtile = JSON.stringify(avis);
+        fetch("http://localhost:8081/avis", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: chargeUtile
+        });
+    });
+}
