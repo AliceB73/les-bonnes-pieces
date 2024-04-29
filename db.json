@@ -185,12 +185,18 @@
       "commentaire": "Sint quidem quia ipsam quae.",
       "nbEtoiles": 5
     },
-  
     {
       "pieceId": 1,
       "utilisateur": "Tom",
       "commentaire": "Cette ampoule éclaire très bien !",
       "id": 23
+    },
+    {
+      "pieceId": 2,
+      "utilisateur": "Sarah",
+      "commentaire": "Je recommande",
+      "nbEtoiles": "5",
+      "id": 24
     }
   ]
 }
